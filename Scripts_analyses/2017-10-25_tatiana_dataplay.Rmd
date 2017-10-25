@@ -1,0 +1,34 @@
+---
+title: "data_play"
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+### load libraries
+```{r}
+library(ggplot2)
+```
+
+### importing data
+```{r}
+#import the master data
+master.data<-read.csv("../Data/2017-10-25_dataslice_Rhagoletis_master_data.csv")
+
+str(master.data)
+summary(master.data$Host)
+
+
+```
+
+### we want to plot mass for each host
+
+```{r}
+ggplot(data=master.data,aes(x=Host,y=mass_day10))+geom_boxplot()
+```
+
+### identifying rows with incorrect naming
+```{r}
+subset(master.data,Host=="haw")
+subset(master.data,Host=="")
+```
+
